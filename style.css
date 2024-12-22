@@ -10,3 +10,15 @@
     border-radius: 10px;
     margin: 100px;
 }
+input{
+    width: 100px;
+    font-size: 32px;
+    border-radius: 5px;
+    font-family: serif;
+}
+
+/*背景画像*/
+.bg-main{
+    background-image: url(https://sozaino.site/wp-content/uploads/2022/11/huyu32_1-1280x720.png);
+    width: 100%;
+}
