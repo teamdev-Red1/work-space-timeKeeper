@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/*アジェンダインプット*/
+.agenda-input{
+    width: 80%;
+    height: 300px;
+    font-size: 32px;
+    font-family:serif;
+    border: 2px solid #16ff16;
+    border-radius: 10px;
+    margin: 100px;
+}
