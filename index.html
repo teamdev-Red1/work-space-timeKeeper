@@ -10,7 +10,7 @@
 <body>
     <!--ナビゲーションバー-->
     <nav class="navbar navbar-expand-lg bg-info">
-        <p class="navbar-brand">タイムキーパー君⚽</p> 
+        <p class="navbar-brand">タイムキーパー君⚽</p>
     </nav>
     <!--ページ全体のコンテナ-->
     <div class="vh-100 bg-secondary d-flex justify-content-center align-items-center">
@@ -23,12 +23,13 @@
 
             <!--タイマー-->
             <div class="d-flex">
-                <input type="number" value="30" class="text-center">
+                <input id="timer-input" type="number" value="30" class="text-center">
                 <h3 class="mx-3">分</h3>
             </div>
-            <button class="btn btn-primary my-5">スタート</button>
+            <button id = "start-button" class="btn btn-primary my-5">スタート</button>
         </div>
     </div>
+<script src="meetingPage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
