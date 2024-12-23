@@ -22,13 +22,28 @@
             </div>
 
             <!--タイマー-->
-            <div class="d-flex justify-content-center align-items-center">
-                <input id ="timer-input" type="number" value="30" class="text-center">
-                <h3 class="mx-3">分</h3>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <div class="d-flex">
+                    <h3 id="minutes-data">30</h3>
+                    <h4>分</h4>
+                    <h3 id="seconds-data">0</h3>
+                    <h4>秒</h4>
+                </div>
+            <!--スライダー-->
+            <div class="d-flex my-3">
+                <h4 class="mx-3">分</h4>
+                <input id ="minutes-input" type = "range" value = "30" min = "1" max = "60">
+            </div>
+            <div class="d-flex my-3">
+                <h4 class="mx-3">秒</h4>
+                <input id ="seconds-input" type = "range" value = "0" min = "0" max = "59">
+            </div>
+                
             </div>
             <button class="btn btn-primary my-5">スタート</button>
         </div>
     </div>
+<script src="main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
