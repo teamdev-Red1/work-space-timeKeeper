@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //meetingPage.htmlの処理
     const agendaDisplay = document.getElementById('agendaDisplay');
     const timerDisplay = document.getElementById('timer');
+    const comment = document.getElementById('comment')
 
     //localStorageからデータ取得
     const agenda = localStorage.getItem('agenda');
@@ -32,21 +33,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //ダウンカウンターの実装
     //parseInt:文字列の数値への変換(10進数を指定)
-    remainTime = parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
-
+    counterTime = parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
+    remainTime = counterTime;
     const updateTimer = () => {
       const mins = Math.floor(remainTime / 60); //タイマーの分数
       const secs = remainTime % 60; //タイマーの秒数
       timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
       //ここに残り時間ごとのメッセージをつけ足していく
       if (remainTime > 0) {
+        if (remainTime > 0.9 * counterTime) {
+          comment.textContent = "議題を共有しましょう"
+        }
+        else if (remainTime > 0.8 * counterTime) {
+          comment.textContent = "ゴールを共有しましょう"
+        }
         remainTime -= 1;
         setTimeout(updateTimer, 1000);
       } else {
         alert('終了しました!!');
       }
     };
-    updateTimer(); //タイマーの更新(1秒減らす)
+    updateTimer(); //タイマーの更新
 
     const backButton = document.getElementById('backButton');
     backButton.addEventListener('click', function () {
