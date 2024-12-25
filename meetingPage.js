@@ -31,12 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
     agendaDisplay.textContent = agenda;
 
     //ダウンカウンターの実装
-    //parseInt:文字列の数値への変換
+    //parseInt:文字列の数値への変換(10進数を指定)
     remainTime = parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
 
     const updateTimer = () => {
-      const mins = Math.floor(remainTime / 60);
-      const secs = remainTime % 60;
+      const mins = Math.floor(remainTime / 60); //タイマーの分数
+      const secs = remainTime % 60; //タイマーの秒数
       timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
       //ここに残り時間ごとのメッセージをつけ足していく
       if (remainTime > 0) {
@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('終了しました!!');
       }
     };
-    updateTimer();
+    updateTimer(); //タイマーの更新(1秒減らす)
 
     const backButton = document.getElementById('backButton');
     backButton.addEventListener('click', function () {
-      //meetingPage.htmlに移動
+      //index.htmlに移動
       window.location.href = "index.html";
     });
   }
