@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const startButton = document.getElementById('start-button');
     startButton.addEventListener('click', function () {
       const agenda = document.getElementById('agenda-text').value;
-      const minutes = document.getElementById('timer-input').value;
+      const minutes = document.getElementById('minutes-input').value;
+      const seconds = document.getElementById('seconds-input').value;
 
       //localStorageにデータを保存
       localStorage.setItem('agenda', agenda);
       localStorage.setItem('minutes', minutes);
+      localStorage.setItem('seconds', seconds);
 
       //meetingPage.htmlに移動
       window.location.href = "meetingPage.html";
@@ -23,12 +25,14 @@ document.addEventListener('DOMContentLoaded', function () {
     //localStorageからデータ取得
     const agenda = localStorage.getItem('agenda');
     const minutes = localStorage.getItem('minutes');
+    const seconds = localStorage.getItem('seconds');
 
     //アジェンダの表示
     agendaDisplay.textContent = agenda;
 
     //ダウンカウンターの実装
-    let remainTime = parseInt(minutes, 10)* 60;
+    //parseInt:文字列の数値への変換
+    remainTime = parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
 
     const updateTimer = () => {
       const mins = Math.floor(remainTime / 60);
