@@ -6,7 +6,8 @@ const  CONFIG = {
 }
 
 class View{
-    static slider(time,input){
+    static slider(time, input) {
+        time.textContent = input.value;
         input.addEventListener("input",function(){
             time.textContent = input.value;
         })

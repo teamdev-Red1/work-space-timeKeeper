@@ -8,5 +8,27 @@
     font-family:serif;
     border: 2px solid #16ff16;
     border-radius: 10px;
-    margin: 100px;
+    margin: 2rem;
+}
+input{
+    width: 400px;
+    font-size: 32px;
+    border-radius: 5px;
+    font-family: serif;
+}
+
+/*背景画像*/
+.bg-main{
+    background-image: url("images/background.png");
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+}
+
+.count-container{
+    background-color:slategray;
+    padding: 0.5rem;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
 }

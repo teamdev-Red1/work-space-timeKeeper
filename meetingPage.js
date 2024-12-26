@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //index.htmlでの処理
     const startButton = document.getElementById('start-button');
     startButton.addEventListener('click', function () {
-      const agenda = document.getElementById('agenda-text').value;
+      const agenda = document.getElementById('agenda-container').value;
       const minutes = document.getElementById('minutes-input').value;
       const seconds = document.getElementById('seconds-input').value;
 
