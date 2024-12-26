@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   else if (currentPage === 'meetingPage.html') {
     //meetingPage.htmlの処理
-    const agendaDisplay = document.getElementById('agendaDisplay');
+    const agendaDisplay = document.getElementById('agenda');
     const timerDisplay = document.getElementById('timer');
     const comment = document.getElementById('comment')
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const seconds = localStorage.getItem('seconds');
 
     //アジェンダの表示
-    agendaDisplay.textContent = agenda;
+    agendaDisplay.textContent = 'アジェンダは「' + agenda + '」です。';
 
     //ダウンカウンターの実装
     //parseInt:文字列の数値への変換(10進数を指定)

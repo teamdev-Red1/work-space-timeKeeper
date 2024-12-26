@@ -1,12 +1,44 @@
 @charset "utf-8";
 
-/*アジェンダ*/
 .agenda {
-  width: 80%;
-  height: 300px;
+  min-width: 600px;
+  min-height: 300px;
   font-size: 32px;
   font-family: serif;
   border: 2px solid #16ff16;
   border-radius: 10px;
-  margin: 100px;
+  background-color: #ffffff;
+  margin: 2rem;
+}
+
+/*背景画像*/
+.bg-main {
+  background-image: url("images/background.png");
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
+}
+
+.comment {
+    max-width: 50%;
+    max-height: 300px;
+    font-size: 32px;
+    font-family: serif;
+    border: 2px solid #16ff16;
+    border-radius: 10px;
+    margin: 20px;
+    background-color: #ffffff;
+}
+
+.count-container {
+  background-color: slategray;
+  padding: 0.5rem;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+
+
+.button {
+  border-radius: 10px;
 }
