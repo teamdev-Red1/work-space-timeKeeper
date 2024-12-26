@@ -32,3 +32,9 @@ input{
     margin-bottom: 1rem;
     border-radius: 1rem;
 }
+
+#minutes-data{
+    text-align: center;
+    font-size: 3rem;
+    width: 200px;
+}
