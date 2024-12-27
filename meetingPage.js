@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const minutes = document.getElementById('minutes-input').value;
       const seconds = document.getElementById('seconds-input').value;
 
-      //アジェンダが空だった場合
-      if (!agenda) {
-        alert('アジェンダを入力してください！'); // アラートを表示
+      //アジェンダが空∨スペースのみ場合
+      if (!agenda || !/\S/.test(agenda)) {
+        alert('アジェンダを入力してください！スペースだけも無効です'); // アラートを表示
         return; // 処理を中断
       }
 
