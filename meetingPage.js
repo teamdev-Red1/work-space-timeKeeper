@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const minutes = document.getElementById('minutes-input').value;
       const seconds = document.getElementById('seconds-input').value;
 
+      //アジェンダが空だった場合
+      if (!agenda) {
+        alert('アジェンダを入力してください！'); // アラートを表示
+        return; // 処理を中断
+      }
+
       //localStorageにデータを保存
       localStorage.setItem('agenda', agenda);
       localStorage.setItem('minutes', minutes);
@@ -47,10 +53,19 @@ document.addEventListener('DOMContentLoaded', function () {
         else if (remainTime > 0.8 * counterTime) {
           comment.textContent = "ゴールを共有しましょう"
         }
+        else if (remainTime > 0.2 * counterTime) {
+          comment.textContent = "議論する時間です"
+        }
+        else if (remainTime > 0.1 * counterTime) {
+          comment.textContent = "⚠️議論をまとめてください⚠️"
+        }
+        else{
+          comment.textContent = "次回までのto doを共有してください"
+        }
         remainTime -= 1;
         setTimeout(updateTimer, 1000);
       } else {
-        alert('終了しました!!');
+        comment.textContent = "お疲れさまでした!"
       }
     };
     updateTimer(); //タイマーの更新
