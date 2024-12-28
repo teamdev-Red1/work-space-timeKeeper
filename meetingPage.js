@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const comment = document.getElementById('comment')
 
     //localStorageからデータ取得
-    const agendas = JSON.parse(localStorage.getItem('agendas') || '[]');
+    const agendas = JSON.parse(localStorage.getItem('agendas'));
     const minutes = localStorage.getItem('minutes');
 
     //アジェンダの表示
