@@ -18,12 +18,15 @@
         </a>
       </div>
     </nav>
-    <!--メイン部分(アジェンダ、コメント、戻るボタン)-->
-    <div class = "d-flex justify-content-center flex-column align-items-center bg-main vh-100">
-      <div id="agenda-list" class="d-flex justify-content-center flex-column align-items-center list-group"> </div>
-      <div id = "comment" class = "comment"></div>
-      <div id='timer' class="count-container"></div>
-      <button id="backButton" class = "btn btn-primary my-5">トップページに戻る</button>
+    <div class="d-flex justify-content-center align-items-center bg-main vh-100">
+       <!--メイン部分(アジェンダ、コメント、戻るボタン)-->
+      <div class = "d-flex justify-content-center align-items-center flex-column col-12">
+        <div id="agenda-list" class="d-flex justify-content-center flex-column align-items-center list-group"></div>
+        <div id="goal-list" class="list-group my-3"></div>
+        <div id = "comment" class = "comment"></div>
+        <div id='timer' class="count-container"></div>
+        <button id="backButton" class = "btn btn-primary my-5">トップページに戻る</button>
+      </div>
     </div>
     <!--javascript読み込み-->
     <script src="meetingPage.js"></script>

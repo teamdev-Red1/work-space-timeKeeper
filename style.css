@@ -9,6 +9,14 @@
     border-radius: 10px;
 }
 
+.goal-input {
+    width: 80%;
+    font-size: 32px;
+    font-family: serif;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
 input {
     width: 400px;
     font-size: 32px;

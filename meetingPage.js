@@ -18,11 +18,35 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
+      const goals = [];
+      const goalInputs = document.querySelectorAll('.goal-input');
+      goalInputs.forEach(input => {
+        const value = input.value;
+        if (value || /\S/.test(value)) {  //空またはスペースのみの物は除外
+          goals.push(value)
+        }
+      })
+
+      if (agendas.length === 0) {
+        alert("少なくとも一つのゴールを指定してください");
+        return;
+      }
+
+      if (agendas.length !== goals.length) {
+        alert("アジェンダとゴールの数が一致していません。入力内容を確認してください。");
+        return;
+      }
+
+
       //分数の取得
       const minutes = document.getElementById('minutes-data').value;
 
       //localStorageにデータを保存
-      localStorage.setItem('agendas', JSON.stringify(agendas));
+      const agendasWithGoals = agendas.map((agenda, index) => ({
+        agenda: agenda,
+        goal: goals[index]
+      }));
+      localStorage.setItem('agendasWithGoals', JSON.stringify(agendasWithGoals));
       localStorage.setItem('minutes', minutes);
 
       //meetingPage.htmlに移動
@@ -31,26 +55,66 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   else if (currentPage === 'meetingPage.html') {
     //meetingPage.htmlの処理
-    const agendaDisplay = document.getElementById('agenda-list');
+    const agendaList = document.getElementById('agenda-list');
+    const goalList = document.getElementById('goal-list');
     const timerDisplay = document.getElementById('timer');
     const comment = document.getElementById('comment')
 
     //localStorageからデータ取得
-    const agendas = JSON.parse(localStorage.getItem('agendas'));
+    const agendasWithGoals = JSON.parse(localStorage.getItem('agendasWithGoals'));
     const minutes = localStorage.getItem('minutes');
 
-    //アジェンダの表示
-    agendas.forEach((agenda, index) => {
-    const div = document.createElement('div');
-    div.className = 'agenda-box';
-    div.textContent = `${index + 1}. ${agenda}`; //agendaの表示形式
+    // アジェンダを表示
+    agendasWithGoals.forEach((item, index) => {
+      // アジェンダ
+      const agendaDiv = document.createElement('div');
+      agendaDiv.className = 'agenda-box d-flex align-items-center';
 
-    // 議論済みのアジェンダに線を引く
-    div.addEventListener('click', function () {
-      div.classList.toggle('completed'); // CSSクラスを切り替える
-    });
+      const agendaCheckbox = document.createElement('input');
+      agendaCheckbox.type = 'checkbox';
+      agendaCheckbox.style.marginRight = '10px';
 
-    agendaDisplay.appendChild(div);
+      const agendaLabel = document.createElement('span');
+      agendaLabel.textContent = `${index + 1}. アジェンダ: ${item.agenda}`;
+
+      agendaCheckbox.addEventListener('change', function () {
+        if (agendaCheckbox.checked) {
+          agendaLabel.style.textDecoration = 'line-through';
+          agendaLabel.style.color = 'gray';
+        } else {
+          agendaLabel.style.textDecoration = 'none';
+          agendaLabel.style.color = 'black';
+        }
+      });
+
+      agendaDiv.appendChild(agendaCheckbox);
+      agendaDiv.appendChild(agendaLabel);
+      agendaList.appendChild(agendaDiv);
+
+      // ゴール
+      const goalDiv = document.createElement('div');
+      goalDiv.className = 'goal-box d-flex align-items-center';
+
+      const goalCheckbox = document.createElement('input');
+      goalCheckbox.type = 'checkbox';
+      goalCheckbox.style.marginRight = '10px';
+
+      const goalLabel = document.createElement('span');
+      goalLabel.textContent = `${index + 1}. ゴール: ${item.goal}`;
+
+      goalCheckbox.addEventListener('change', function () {
+        if (goalCheckbox.checked) {
+          goalLabel.style.textDecoration = 'line-through';
+          goalLabel.style.color = 'gray';
+        } else {
+          goalLabel.style.textDecoration = 'none';
+          goalLabel.style.color = 'black';
+        }
+      });
+
+      goalDiv.appendChild(goalCheckbox);
+      goalDiv.appendChild(goalLabel);
+      agendaList.appendChild(goalDiv);
     });
 
     //ダウンカウンターの実装

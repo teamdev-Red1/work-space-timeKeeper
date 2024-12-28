@@ -10,14 +10,16 @@
 
 /*時間経過で変化するメッセージ*/
 .comment {
-    max-width: 85%;
+    width: 60%;
     max-height: 400px;
     font-size: 48px;
     font-family: serif;
-    border: 2px solid #16ff16;
+    border: 2px solid #000000;
     border-radius: 10px;
     margin: 20px;
     background-color: #ffffff;
+    text-align: center;
+    opacity: 75%;
 }
 
 /*タイマーのデザイン*/
@@ -27,6 +29,7 @@
   font-size: 4rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
+  opacity: 75%;
 }
 
 /*戻るボタン*/
@@ -35,19 +38,39 @@
 }
 
 /*アジェンダの表示について*/
+#agenda-list {
+  width: 100%;
+}
+
 .agenda-box {
-  min-width: 200px;
+  width: 60%;
   min-height: 10px;
   font-size: 32px;
   font-family: serif;
   background-color: #ffffff;
-  border: 2px solid #16ff16;
+  border: 2px solid #000000;
   border-radius: 10px;
   margin-bottom: 10px;
-  text-align: center;
+  opacity: 75%;
 }
 /*アジェンダを消すための横線*/
 .agenda-box.completed {
   text-decoration: line-through;
   color: gray; /*線を引いたら色をうすく*/
+}
+
+#goal-list {
+  width: 100%;
+}
+
+.goal-box {
+  width: 60%;
+  min-height: 10px;
+  font-size: 32px;
+  font-family: serif;
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  opacity: 75%;
 }
