@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const currentPage = window.location.pathname.split('/').pop();
   if (currentPage === 'index.html') {
     //index.htmlでの処理
-    const startButton = document.getElementById('start-button');
+    const startButton = document.getElementById('start-btn');
     startButton.addEventListener('click', function () {
       const agendas = []; //リストで複数のagendaを格納
       const inputs = document.querySelectorAll(".agenda-input");
