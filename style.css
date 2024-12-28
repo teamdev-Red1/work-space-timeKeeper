@@ -8,11 +8,19 @@
     border: 2px solid;
     border-radius: 10px;
 }
+.goal-input{
+    width: 80%;
+    font-size: 32px;
+    font-family:serif;
+    border: 2px solid;
+    border-radius: 10px;
+}
 input{
     width: 400px;
     font-size: 32px;
     border-radius: 5px;
     font-family: serif;
+    opacity: 75%;
 }
 
 /*背景画像*/
@@ -29,6 +37,7 @@ input{
     font-size: 4rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
+    opacity: 75%;
 }
 /*タイマーの入力部*/
 #minutes-data{
