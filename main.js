@@ -32,7 +32,7 @@ class View{
         if(agenda.length > 1){
             target.remove();
         }
-        
+
     }
 }
 class Controller{

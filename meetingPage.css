@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+/*背景画像*/
+.bg-main {
+  background-image: url("images/background.png");
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
+}
+
+/*時間経過で変化するメッセージ*/
+.comment {
+    max-width: 85%;
+    max-height: 400px;
+    font-size: 48px;
+    font-family: serif;
+    border: 2px solid #16ff16;
+    border-radius: 10px;
+    margin: 20px;
+    background-color: #ffffff;
+}
+
+/*タイマーのデザイン*/
+.count-container {
+  background-color: slategray;
+  padding: 0.5rem;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+
+/*戻るボタン*/
+.button {
+  border-radius: 10px;
+}
+
+/*アジェンダの表示について*/
+.agenda-box {
+  min-width: 200px;
+  min-height: 10px;
+  font-size: 32px;
+  font-family: serif;
+  background-color: #ffffff;
+  border: 2px solid #16ff16;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+/*アジェンダを消すための横線*/
+.agenda-box.completed {
+  text-decoration: line-through;
+  color: gray; /*線を引いたら色をうすく*/
+}
