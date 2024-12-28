@@ -22,27 +22,27 @@
         <!--メインの要素-->
         <div class="d-flex justify-content-center align-items-center flex-column col-10">
             <!--アジェンダ-->
-            <div class="d-flex justify-content-center flex-column align-items-center col-10">
-                <textarea id="agenda-container" type="text" class="agenda-input" placeholder="アジェンダを入力してください"></textarea>
+            <div class="d-flex justify-content-center align-items-center mb-5 col-12 flex-column">
+                <div id="agenda-container" class="d-flex justify-content-center col-12 flex-column align-items-center">
+                    <input type="text" class="mb-3 agenda-input" placeholder="アジェンダを入力してください">
+                </div>
+                <div class="btn-group">
+                    <button id="add-btn" class="btn btn-primary mx-3">+</button>
+                    <button id="remove-btn" class="btn btn-primary mx-3">-</button>
+                </div>
             </div>
 
             <!--タイマー-->
             <div class="d-flex justify-content-center align-items-center flex-column">
                 <div class="d-flex count-container">
-                    <p id="minutes-data">30</p>
+                    <input id="minutes-data" type="number" value="30" min="1" max="120">
                     <p>分</p>
-                    <p id="seconds-data">0</p>
-                    <p>秒</p>
                 </div>
                 <!--スライダー-->
             </div>
             <div class="d-flex my-3">
                 <h2 class="mx-3">分</h2>
-                <input id ="minutes-input" type = "range" value = "30" min = "1" max = "60">
-            </div>
-            <div class="d-flex my-3">
-                <h2 class="mx-3">秒</h2>
-                <input id ="seconds-input" type = "range" value = "0" min = "0" max = "59">
+                <input id ="minutes-input" type = "range" value = "30" min = "0" max = "120" step="5" list="markers">
             </div>
             <button id = "start-button" class="btn btn-primary my-5">スタート</button>
         </div>

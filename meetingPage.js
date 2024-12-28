@@ -4,20 +4,26 @@ document.addEventListener('DOMContentLoaded', function () {
     //index.htmlでの処理
     const startButton = document.getElementById('start-button');
     startButton.addEventListener('click', function () {
-      const agenda = document.getElementById('agenda-container').value;
-      const minutes = document.getElementById('minutes-input').value;
-      const seconds = document.getElementById('seconds-input').value;
+      const agendas = []; //リストで複数のagendaを格納
+      const inputs = document.querySelectorAll(".agenda-input");
+      inputs.forEach(input => {
+        const value = input.value;
+        if (value || /\S/.test(value)) {  //空またはスペースのみの物は除外
+          agendas.push(value)
+        }
+      });
 
-      //アジェンダが空∨スペースのみ場合
-      if (!agenda || !/\S/.test(agenda)) {
-        alert('アジェンダを入力してください！スペースだけも無効です'); // アラートを表示
-        return; // 処理を中断
+      if (agendas.length === 0) { //アジェンダが入力されてない場合
+        alert("少なくとも一つのアジェンダを指定してください");
+        return;
       }
 
+      //分数の取得
+      const minutes = document.getElementById('minutes-data').value;
+
       //localStorageにデータを保存
-      localStorage.setItem('agenda', agenda);
+      localStorage.setItem('agendas', JSON.stringify(agendas));
       localStorage.setItem('minutes', minutes);
-      localStorage.setItem('seconds', seconds);
 
       //meetingPage.htmlに移動
       window.location.href = "meetingPage.html";
@@ -25,27 +31,37 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   else if (currentPage === 'meetingPage.html') {
     //meetingPage.htmlの処理
-    const agendaDisplay = document.getElementById('agenda');
+    const agendaDisplay = document.getElementById('agenda-list');
     const timerDisplay = document.getElementById('timer');
     const comment = document.getElementById('comment')
 
     //localStorageからデータ取得
-    const agenda = localStorage.getItem('agenda');
+    const agendas = JSON.parse(localStorage.getItem('agendas') || '[]');
     const minutes = localStorage.getItem('minutes');
-    const seconds = localStorage.getItem('seconds');
 
     //アジェンダの表示
-    agendaDisplay.textContent = 'アジェンダは「' + agenda + '」です。';
+    agendas.forEach((agenda, index) => {
+    const div = document.createElement('div');
+    div.className = 'agenda-box';
+    div.textContent = `${index + 1}. ${agenda}`; //agendaの表示形式
+
+    // 議論済みのアジェンダに線を引く
+    div.addEventListener('click', function () {
+      div.classList.toggle('completed'); // CSSクラスを切り替える
+    });
+
+    agendaDisplay.appendChild(div);
+    });
 
     //ダウンカウンターの実装
     //parseInt:文字列の数値への変換(10進数を指定)
-    counterTime = parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
+    counterTime = parseInt(minutes, 10) * 60;
     remainTime = counterTime;
     const updateTimer = () => {
       const mins = Math.floor(remainTime / 60); //タイマーの分数
       const secs = remainTime % 60; //タイマーの秒数
-      timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-      //ここに残り時間ごとのメッセージをつけ足していく
+      timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`; //タイマー表示
+      //残り時間ごとのメッセージ
       if (remainTime > 0) {
         if (remainTime > 0.9 * counterTime) {
           comment.textContent = "議題を共有しましょう"

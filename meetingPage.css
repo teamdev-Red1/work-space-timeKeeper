@@ -1,16 +1,5 @@
 @charset "utf-8";
 
-.agenda {
-  min-width: 600px;
-  min-height: 300px;
-  font-size: 32px;
-  font-family: serif;
-  border: 2px solid #16ff16;
-  border-radius: 10px;
-  background-color: #ffffff;
-  margin: 2rem;
-}
-
 /*背景画像*/
 .bg-main {
   background-image: url("images/background.png");
@@ -19,10 +8,11 @@
   background-position: center;
 }
 
+/*時間経過で変化するメッセージ*/
 .comment {
-    max-width: 80%;
-    max-height: 300px;
-    font-size: 32px;
+    max-width: 85%;
+    max-height: 400px;
+    font-size: 48px;
     font-family: serif;
     border: 2px solid #16ff16;
     border-radius: 10px;
@@ -30,6 +20,7 @@
     background-color: #ffffff;
 }
 
+/*タイマーのデザイン*/
 .count-container {
   background-color: slategray;
   padding: 0.5rem;
@@ -38,7 +29,25 @@
   border-radius: 1rem;
 }
 
-
+/*戻るボタン*/
 .button {
   border-radius: 10px;
+}
+
+/*アジェンダの表示について*/
+.agenda-box {
+  min-width: 200px;
+  min-height: 10px;
+  font-size: 32px;
+  font-family: serif;
+  background-color: #ffffff;
+  border: 2px solid #16ff16;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+/*アジェンダを消すための横線*/
+.agenda-box.completed {
+  text-decoration: line-through;
+  color: gray; /*線を引いたら色をうすく*/
 }
