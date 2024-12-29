@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /*アジェンダインプット*/
-.agenda-input{
+.agenda-input {
     width: 80%;
     font-size: 32px;
     font-family:serif;
@@ -15,7 +15,8 @@
     border: 2px solid;
     border-radius: 10px;
 }
-input{
+
+input {
     width: 400px;
     font-size: 32px;
     border-radius: 5px;
@@ -24,23 +25,25 @@ input{
 }
 
 /*背景画像*/
-.bg-main{
+.bg-main {
     background-image: url("images/background.png");
     background-size: cover;
     background-repeat: none;
     background-position: center;
 }
+
 /*タイマーの入力が入ってるコンテナ*/
-.count-container{
-    background-color:slategray;
+.count-container {
+    background-color: slategray;
     padding: 0.5rem;
     font-size: 4rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
     opacity: 75%;
 }
+
 /*タイマーの入力部*/
-#minutes-data{
+#minutes-data {
     text-align: center;
     font-size: 3rem;
     width: 200px;

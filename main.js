@@ -51,7 +51,7 @@ class View{
         if(inputGroup.length > 1){
             target.remove();
         }
-        
+
     }
 }
 class Controller{
