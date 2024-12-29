@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const inputs = document.querySelectorAll(".agenda-input");
       inputs.forEach(input => {
         const value = input.value;
-        if (value || /\S/.test(value)) {  //空またはスペースのみの物は除外
+        if (value && /\S/.test(value)) {  //空またはスペースのみの物は除外
           agendas.push(value)
         }
       });
 
       if (agendas.length === 0) { //アジェンダが入力されてない場合
-        alert("少なくとも一つのアジェンダを指定してください");
+        alert("少なくとも一つのアジェンダを指定してください(スぺ＾スのみは無効です)");
         return;
       }
 
@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const goalInputs = document.querySelectorAll('.goal-input');
       goalInputs.forEach(input => {
         const value = input.value;
-        if (value || /\S/.test(value)) {  //空またはスペースのみの物は除外
+        if (value && /\S/.test(value)) {  //空またはスペースのみの物は除外
           goals.push(value)
         }
       })
 
       if (agendas.length === 0) {
-        alert("少なくとも一つのゴールを指定してください");
+        alert("少なくとも一つのゴールを指定してください(スペースのみは無効です)");
         return;
       }
 
@@ -56,66 +56,81 @@ document.addEventListener('DOMContentLoaded', function () {
   else if (currentPage === 'meetingPage.html') {
     //meetingPage.htmlの処理
     const agendaList = document.getElementById('agenda-list');
-    const goalList = document.getElementById('goal-list');
     const timerDisplay = document.getElementById('timer');
-    const comment = document.getElementById('comment')
+    const comment = document.getElementById('comment');
 
-    //localStorageからデータ取得
-    const agendasWithGoals = JSON.parse(localStorage.getItem('agendasWithGoals'));
+    // localStorageからデータ取得
+    const agendasWithGoals = JSON.parse(localStorage.getItem('agendasWithGoals') || '[]');
     const minutes = localStorage.getItem('minutes');
 
-    // アジェンダを表示
+    if (agendasWithGoals.length === 0) {
+      alert("アジェンダとゴールがありません。トップページに戻ります。");
+      window.location.href = "index.html";
+      return;
+    }
+
+    // チェック状態の復元（オプション）
+    const completedStates = JSON.parse(localStorage.getItem('completedStates') || '[]');
+
+    // アジェンダとゴールを2行で表示し、チェックボックスで横線を引く
+    // アジェンダとゴールを表示
     agendasWithGoals.forEach((item, index) => {
-      // アジェンダ
+      const rowDiv = document.createElement('div');
+      rowDiv.className = 'row-item d-flex flex-column my-2';
+
+      // チェックボックスを作成
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'row-checkbox mb-2';
+
+      // アジェンダ行
       const agendaDiv = document.createElement('div');
       agendaDiv.className = 'agenda-box d-flex align-items-center';
+      agendaDiv.textContent = `${index + 1}. アジェンダ: ${item.agenda}`;
 
-      const agendaCheckbox = document.createElement('input');
-      agendaCheckbox.type = 'checkbox';
-      agendaCheckbox.style.marginRight = '10px';
-
-      const agendaLabel = document.createElement('span');
-      agendaLabel.textContent = `${index + 1}. アジェンダ: ${item.agenda}`;
-
-      agendaCheckbox.addEventListener('change', function () {
-        if (agendaCheckbox.checked) {
-          agendaLabel.style.textDecoration = 'line-through';
-          agendaLabel.style.color = 'gray';
-        } else {
-          agendaLabel.style.textDecoration = 'none';
-          agendaLabel.style.color = 'black';
-        }
-      });
-
-      agendaDiv.appendChild(agendaCheckbox);
-      agendaDiv.appendChild(agendaLabel);
-      agendaList.appendChild(agendaDiv);
-
-      // ゴール
+      // ゴール行
       const goalDiv = document.createElement('div');
-      goalDiv.className = 'goal-box d-flex align-items-center';
+      goalDiv.className = 'goal-box';
+      goalDiv.textContent = `ゴール: ${item.goal}`;
 
-      const goalCheckbox = document.createElement('input');
-      goalCheckbox.type = 'checkbox';
-      goalCheckbox.style.marginRight = '10px';
-
-      const goalLabel = document.createElement('span');
-      goalLabel.textContent = `${index + 1}. ゴール: ${item.goal}`;
-
-      goalCheckbox.addEventListener('change', function () {
-        if (goalCheckbox.checked) {
-          goalLabel.style.textDecoration = 'line-through';
-          goalLabel.style.color = 'gray';
+      // チェック時・解除時のスタイル変更
+      checkbox.addEventListener('change', function () {
+        if (checkbox.checked) {
+          agendaDiv.style.textDecoration = 'line-through';
+          agendaDiv.style.color = 'gray';
+          goalDiv.style.textDecoration = 'line-through';
+          goalDiv.style.color = 'gray';
         } else {
-          goalLabel.style.textDecoration = 'none';
-          goalLabel.style.color = 'black';
+          agendaDiv.style.textDecoration = 'none';
+          agendaDiv.style.color = 'black';
+          goalDiv.style.textDecoration = 'none';
+          goalDiv.style.color = 'black';
         }
-      });
 
-      goalDiv.appendChild(goalCheckbox);
-      goalDiv.appendChild(goalLabel);
-      agendaList.appendChild(goalDiv);
+        // チェック状態を保存
+        const updatedCompletedStates = agendasWithGoals.map((item, idx) => {
+        const row = document.querySelectorAll('.row-item')[idx];
+        const rowCheckbox = row.querySelector('.row-checkbox');
+        return rowCheckbox.checked;
+      });
+      localStorage.setItem('completedStates', JSON.stringify(updatedCompletedStates));
     });
+
+    // 初期状態の復元
+    if (completedStates[index]) {
+      checkbox.checked = true;
+      agendaDiv.style.textDecoration = 'line-through';
+      agendaDiv.style.color = 'gray';
+      goalDiv.style.textDecoration = 'line-through';
+      goalDiv.style.color = 'gray';
+    }
+
+    rowDiv.appendChild(checkbox);
+    rowDiv.appendChild(agendaDiv);
+    rowDiv.appendChild(goalDiv);
+    agendaList.appendChild(rowDiv);
+  });
+
 
     //ダウンカウンターの実装
     //parseInt:文字列の数値への変換(10進数を指定)

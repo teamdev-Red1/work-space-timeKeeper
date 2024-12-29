@@ -37,9 +37,28 @@
   border-radius: 10px;
 }
 
+/* アジェンダとゴールのコンテナ */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.agenda-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 /*アジェンダの表示について*/
 #agenda-list {
-  width: 100%;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* リスト全体を中央揃え */
+    width: 100%;
+    max-width: 800px;
+    /* コンテナの最大幅を設定 */
 }
 
 .agenda-box {
@@ -73,4 +92,27 @@
   border-radius: 10px;
   margin-bottom: 10px;
   opacity: 75%;
+}
+
+/* チェックボックスのコンテナ */
+.checkbox-container {
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row-checkbox {
+  width: 25px;          /* 大きめのサイズ */
+  height: 25px;
+  cursor: pointer;      /* ポインターに変更 */
+  accent-color: green;  /* チェック時の色を変更（ブラウザ対応が必要） */
+}
+
+/* 各行のレイアウト */
+.row-item {
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
 }
