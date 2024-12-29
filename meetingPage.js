@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // チェック状態の復元
-    const completedStates = JSON.parse(localStorage.getItem('completedStates') || '[]');
+    const completedStates = [];
 
     // アジェンダとゴールを表示
     agendasWithGoals.forEach((item, index) => {
