@@ -109,13 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
           goalDiv.style.color = 'black';
         }
 
-        // チェック状態を保存
-        const updatedCompletedStates = agendasWithGoals.map((item, idx) => {
-        const row = document.querySelectorAll('.row-item')[idx];
-        const rowCheckbox = row.querySelector('.row-checkbox');
-        return rowCheckbox.checked;
-      });
-      localStorage.setItem('completedStates', JSON.stringify(updatedCompletedStates));
+        
     });
 
     // 初期状態の復元
