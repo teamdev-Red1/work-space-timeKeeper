@@ -24,6 +24,9 @@ class View{
         const agendaDiv = document.createElement("div");
         agendaDiv.classList.add("d-flex","col-12","align-items-center","justify-content-end");
 
+        const agendaDiv = document.createElement("div");
+        agendaDiv.classList.add("d-flex","col-12","align-items-center","justify-content-end");
+
         agendaDiv.innerHTML =`
                     <label class="p-2"><h3>アジェンダ：</h3></label>
                     <input type="text" class="mb-3 agenda-input" maxlength="30" placeholder="アジェンダを入力してください(最大30文字)">
@@ -35,19 +38,16 @@ class View{
                     <label class="p-2"><h3>ゴール：</h3></label>
                     <input type="text" class="mb-3 goal-input" maxlength="30" placeholder="ゴールを入力してください(最大30文字)">
         `;
-
         inputDiv.append(agendaDiv);
         inputDiv.append(goalDiv);
 
         target.append(inputDiv);
-
         }
     }
     //アジェンダを削除するメソッド
     static removeAgenda(){
         const inputGroup = document.querySelectorAll(".input-group");
         const target = inputGroup.item(inputGroup.length - 1);
-
         if(inputGroup.length > 1){
             target.remove();
         }
