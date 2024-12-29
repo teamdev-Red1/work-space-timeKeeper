@@ -17,19 +17,38 @@ class View{
         if(!Controller.isMaxOrLessAgenda(n)){
             alert(`アジェンダの最大は${n}個までです`);
         }else{
-        const input = document.createElement("input");
+        const inputDiv = document.createElement("div");
+        inputDiv.classList.add("d-flex","flex-column","col-12","input-group");
         const target = document.getElementById("agenda-container");
+        
+        const agendaDiv = document.createElement("div");
+        agendaDiv.classList.add("d-flex","col-12","align-items-center","justify-content-end");
 
-        input.classList.add("agenda-input","mb-3");
-        input.placeholder = "アジェンダを入力してください";
-        target.append(input);
+        agendaDiv.innerHTML =`
+                    <label class="p-2"><h3>アジェンダ：</h3></label>
+                    <input type="text" class="mb-3 agenda-input" maxlength="30" placeholder="アジェンダを入力してください(最大30文字)">
+        `;
+        const goalDiv = document.createElement("div");
+        goalDiv.classList.add("d-flex","col-12","align-items-center","justify-content-end");
+
+        goalDiv.innerHTML =`
+                    <label class="p-2"><h3>ゴール：</h3></label>
+                    <input type="text" class="mb-3 goal-input" maxlength="30" placeholder="ゴールを入力してください(最大30文字)">
+        `;
+        
+        inputDiv.append(agendaDiv);
+        inputDiv.append(goalDiv);
+
+        target.append(inputDiv);
+        
         }
     }
     //アジェンダを削除するメソッド
     static removeAgenda(){
-        const agenda = document.querySelectorAll(".agenda-input");
-        const target = agenda.item(agenda.length - 1);
-        if(agenda.length > 1){
+        const inputGroup = document.querySelectorAll(".input-group");
+        const target = inputGroup.item(inputGroup.length - 1);
+        
+        if(inputGroup.length > 1){
             target.remove();
         }
 
