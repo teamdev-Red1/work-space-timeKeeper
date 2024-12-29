@@ -24,9 +24,6 @@ class View{
         const agendaDiv = document.createElement("div");
         agendaDiv.classList.add("d-flex","col-12","align-items-center","justify-content-end");
 
-        const agendaDiv = document.createElement("div");
-        agendaDiv.classList.add("d-flex","col-12","align-items-center","justify-content-end");
-
         agendaDiv.innerHTML =`
                     <label class="p-2"><h3>アジェンダ：</h3></label>
                     <input type="text" class="mb-3 agenda-input" maxlength="30" placeholder="アジェンダを入力してください(最大30文字)">
