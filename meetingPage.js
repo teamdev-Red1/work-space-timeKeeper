@@ -69,10 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // チェック状態の復元（オプション）
+    // チェック状態の復元
     const completedStates = JSON.parse(localStorage.getItem('completedStates') || '[]');
 
-    // アジェンダとゴールを2行で表示し、チェックボックスで横線を引く
     // アジェンダとゴールを表示
     agendasWithGoals.forEach((item, index) => {
       const rowDiv = document.createElement('div');
@@ -132,9 +131,9 @@ document.addEventListener('DOMContentLoaded', function () {
       agendWithCheck.appendChild(agendaDiv);
 
       rowDiv.appendChild(agendWithCheck);
-    rowDiv.appendChild(goalDiv);
-    agendaList.appendChild(rowDiv);
-  });
+      rowDiv.appendChild(goalDiv);
+      agendaList.appendChild(rowDiv);
+    });
 
 
     //ダウンカウンターの実装
