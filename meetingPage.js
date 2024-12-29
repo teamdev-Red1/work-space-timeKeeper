@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       if (agendas.length === 0) { //アジェンダが入力されてない場合
-        alert("少なくとも一つのアジェンダを指定してください(スぺ＾スのみは無効です)");
+        alert("少なくとも一つのアジェンダを指定してください(スぺースのみは無効です)");
         return;
       }
 
@@ -76,12 +76,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // アジェンダとゴールを表示
     agendasWithGoals.forEach((item, index) => {
       const rowDiv = document.createElement('div');
-      rowDiv.className = 'row-item d-flex flex-column my-2';
+      rowDiv.className = 'row-item d-flex flex-column align-item-center';
 
       // チェックボックスを作成
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
       checkbox.className = 'row-checkbox mb-2';
+
+      const agendWithCheck = document.createElement('div');
+      agendWithCheck.className = 'd-flex agenda-check';
 
       // アジェンダ行
       const agendaDiv = document.createElement('div');
@@ -91,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // ゴール行
       const goalDiv = document.createElement('div');
       goalDiv.className = 'goal-box';
-      goalDiv.textContent = `ゴール: ${item.goal}`;
+      goalDiv.textContent = `${index + 1}. ゴール: ${item.goal}`;
 
       // チェック時・解除時のスタイル変更
       checkbox.addEventListener('change', function () {
@@ -125,8 +128,10 @@ document.addEventListener('DOMContentLoaded', function () {
       goalDiv.style.color = 'gray';
     }
 
-    rowDiv.appendChild(checkbox);
-    rowDiv.appendChild(agendaDiv);
+      agendWithCheck.appendChild(checkbox);
+      agendWithCheck.appendChild(agendaDiv);
+
+      rowDiv.appendChild(agendWithCheck);
     rowDiv.appendChild(goalDiv);
     agendaList.appendChild(rowDiv);
   });

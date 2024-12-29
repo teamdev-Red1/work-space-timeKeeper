@@ -10,7 +10,7 @@
 
 /*時間経過で変化するメッセージ*/
 .comment {
-    width: 60%;
+    width: 50%;
     max-height: 400px;
     font-size: 48px;
     font-family: serif;
@@ -45,6 +45,10 @@
   align-items: center;
 }
 
+.agenda-check {
+  width : 100%
+}
+
 .agenda-container {
   display: flex;
   align-items: center;
@@ -62,7 +66,7 @@
 }
 
 .agenda-box {
-  width: 60%;
+  width: 100%;
   min-height: 10px;
   font-size: 32px;
   font-family: serif;
@@ -83,7 +87,7 @@
 }
 
 .goal-box {
-  width: 60%;
+  width: 100%;
   min-height: 10px;
   font-size: 32px;
   font-family: serif;
@@ -113,6 +117,6 @@
 .row-item {
   width: 90%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
 }
