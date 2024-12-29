@@ -4,14 +4,15 @@
 .agenda-input {
     width: 80%;
     font-size: 32px;
-    font-family:serif;
+    font-family: serif;
     border: 2px solid;
     border-radius: 10px;
 }
-.goal-input{
+
+.goal-input {
     width: 80%;
     font-size: 32px;
-    font-family:serif;
+    font-family: serif;
     border: 2px solid;
     border-radius: 10px;
 }
