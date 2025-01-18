@@ -78,3 +78,8 @@ class Controller{
 View.slider(CONFIG.minutesData,CONFIG.minutesInput);
 Controller.addBtn();
 Controller.removeBtn();
+
+document.getElementById('start-btn').addEventListener('click', function() {
+    // 他の処理
+    window.location.href = 'meetingPage.html'; // 遷移先のURLを修正
+  });
